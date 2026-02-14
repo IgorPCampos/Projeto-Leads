@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-// import { Intention } from '../../intentions/entities/intention.entity';:
+import { Intention } from '../../intentions/entities/intention.entity';
 
 @Entity('leads')
 export class Lead {
@@ -12,6 +12,6 @@ export class Lead {
   @Column({ unique: true })
   email: string;
 
-  // @OneToMany(() => Intention, (intention) => intention.lead)
-  // intentions: Intention[];
+  @OneToMany(() => Intention, (intention) => intention.lead)
+  intentions: Intention[];
 }

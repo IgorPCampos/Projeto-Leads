@@ -5,6 +5,8 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { LeadsModule } from './leads/leads.module';
 import { Lead } from './leads/entities/lead.entity';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { Intention } from './intentions/entities/intention.entity';
+import { IntentionsModule } from './intentions/intentions.module';
 
 @Module({
   imports: [
@@ -13,7 +15,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
-      entities: [Lead],
+      entities: [Lead, Intention],
       synchronize: true,
       ssl: true,
     }),
@@ -34,6 +36,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
     }),
 
     LeadsModule,
+    IntentionsModule,
   ],
 })
 export class AppModule {}
