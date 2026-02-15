@@ -80,7 +80,7 @@ export class LeadsService {
     return lead;
   }
 
-  async findAll(page: number = 1, limit: number = 10): Promise<Lead[]> {
+  async findAll(page: number = 1, limit: number = 10) {
     const pageNumber = page < 1 ? 1 : page;
     const limitNumber = limit < 1 ? 1 : limit;
 
@@ -98,6 +98,16 @@ export class LeadsService {
       `Encontrados ${results.length} leads nesta página (Total no banco: ${total})`,
     );
 
-    return results;
+    const totalPages = Math.ceil(total / limitNumber);
+
+    return {
+      data: results,
+      meta: {
+        total: total,
+        currentPage: pageNumber,
+        pageSize: limitNumber,
+        totalPages: totalPages,
+      },
+    };
   }
 }
