@@ -16,9 +16,6 @@ const Index = () => {
               Projeto Leads
             </span>
           </div>
-          <p className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Admin
-          </p>
         </div>
       </header>
 
